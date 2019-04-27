@@ -15,9 +15,19 @@ let loop;
 // Events
 function stopCounting(){
     clearInterval(loop);
+    return isStartCountingActive = false
 };
+let isStartCountingActive = false;
 // Start
-startBtn.addEventListener('click', startCounting);
+startBtn.addEventListener('click', function(){
+    if(isStartCountingActive === false){
+        startCounting();
+        return isStartCountingActive = !isStartCountingActive;
+    }
+    else{
+        return false
+    }
+});
 
 function startCounting(){
     numberOfSeconds++;
@@ -78,5 +88,5 @@ function clearCounter(){
     seconds.textContent = `0${numberOfSeconds}`;       
     minutes.textContent = `0${numberOfMinutes}`;  
     hours.textContent = `0${numberOfHours}`;    
-    stopCounting();       
+    return stopCounting();       
 } 
